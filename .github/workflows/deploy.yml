@@ -28,6 +28,9 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
+            --min-instances=1 \
+            --cpu=1 \
+            --memory=1Gi \
             --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
 
   deploy-costo:
@@ -52,6 +55,9 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
+            --min-instances=1 \
+            --cpu=1 \
+            --memory=1Gi \
             --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
 
 
@@ -77,4 +83,7 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
+            --min-instances=1 \
+            --cpu=1 \
+            --memory=1Gi \
             --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
