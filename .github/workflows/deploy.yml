@@ -27,7 +27,7 @@ jobs:
             --source ./new_chat_q1 \
             --platform managed \
             --region us-central1 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
             --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
 
   deploy-costo:
@@ -51,7 +51,7 @@ jobs:
             --source ./new_chat_q2 \
             --platform managed \
             --region us-central1 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
             --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
 
 
@@ -76,5 +76,5 @@ jobs:
             --source ./new_chat_q3 \
             --platform managed \
             --region us-central1 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
             --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
