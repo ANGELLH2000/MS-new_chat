@@ -10,7 +10,7 @@ const packageJson = JSON.parse(readFileSync(resolve(__dirname, '../package.json'
 const nameMicroservice = packageJson.name;
 
 //Server connection
-const port = process.env.PORT || 3000;
+const port = process.env.PUERTO || 8080;
 
 //Mongo connection
 const nameBD = "BD_Chat_conversacion"

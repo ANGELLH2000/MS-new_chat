@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to Cloud Run
         env:
           AMQP_URL: ${{ secrets.AMQP_URL }}
-          PORT: ${{ secrets.PORT }}
+          PUERTO: ${{ secrets.PUERTO }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           gcloud run deploy new-chat-q1 \
@@ -28,7 +28,7 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
+            --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
 
   deploy-costo:
     name: Deploy new_chat_q2
@@ -44,7 +44,7 @@ jobs:
       - name: Deploy to Cloud Run
         env:
           AMQP_URL: ${{ secrets.AMQP_URL }}
-          PORT: ${{ secrets.PORT }}
+          PUERTO: ${{ secrets.PUERTO }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           gcloud run deploy new-chat-q2 \
@@ -52,7 +52,7 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
+            --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
 
 
   deploy-base:
@@ -69,7 +69,7 @@ jobs:
       - name: Deploy to Cloud Run
         env:
           AMQP_URL: ${{ secrets.AMQP_URL }}
-          PORT: ${{ secrets.PORT }}
+          PUERTO: ${{ secrets.PUERTO }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           gcloud run deploy new-chat-q3 \
@@ -77,4 +77,4 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
+            --set-env-vars AMQP_URL=$AMQP_URL,PUERTO=$PUERTO,MONGO_URI=$MONGO_URI
