@@ -23,7 +23,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          gcloud run deploy new_chat_q1 \
+          gcloud run deploy new-chat-q1 \
             --source ./new_chat_q1 \
             --platform managed \
             --region us-central1 \
@@ -47,7 +47,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          gcloud run deploy new_chat_q2 \
+          gcloud run deploy new-chat-q2 \
             --source ./new_chat_q2 \
             --platform managed \
             --region us-central1 \
@@ -72,7 +72,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          gcloud run deploy new_chat_q3 \
+          gcloud run deploy new-chat-q3 \
             --source ./new_chat_q3 \
             --platform managed \
             --region us-central1 \
