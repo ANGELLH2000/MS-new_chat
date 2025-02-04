@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  deploy-chat:
-    name: Deploy ms-mongochat-chat
+  deploy-chatconversacion:
+    name: Deploy new_chat_q1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,15 +18,20 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Deploy to Cloud Run
+        env:
+          AMQP_URL: ${{ secrets.AMQP_URL }}
+          PORT: ${{ secrets.PORT }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          gcloud run deploy ms-mongochat-chat \
-            --source ./ms-mongochat-chat \
+          gcloud run deploy new_chat_q1 \
+            --source ./new_chat_q1 \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated
+            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
 
   deploy-costo:
-    name: Deploy ms-mongochat-costo
+    name: Deploy new_chat_q2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,9 +42,39 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - name: Deploy to Cloud Run
+        env:
+          AMQP_URL: ${{ secrets.AMQP_URL }}
+          PORT: ${{ secrets.PORT }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          gcloud run deploy ms-mongochat-costo \
-            --source ./ms-mongochat-costo \
+          gcloud run deploy new_chat_q2 \
+            --source ./new_chat_q2 \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated
+            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
+
+
+  deploy-base:
+    name: Deploy new_chat_q3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Deploy to Cloud Run
+        env:
+          AMQP_URL: ${{ secrets.AMQP_URL }}
+          PORT: ${{ secrets.PORT }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: |
+          gcloud run deploy new_chat_q3 \
+            --source ./new_chat_q3 \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
+            --set-env-vars AMQP_URL=$AMQP_URL,PORT=$PORT,MONGO_URI=$MONGO_URI
