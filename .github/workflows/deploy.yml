@@ -1,0 +1,45 @@
+name: Deploy Microservices to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-chat:
+    name: Deploy ms-mongochat-chat
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ms-mongochat-chat \
+            --source ./ms-mongochat-chat \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
+
+  deploy-costo:
+    name: Deploy ms-mongochat-costo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ms-mongochat-costo \
+            --source ./ms-mongochat-costo \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
